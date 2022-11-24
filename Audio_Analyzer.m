@@ -68,7 +68,7 @@ classdef Audio_Analyzer < matlab.apps.AppBase
         end
 
         % Button pushed function: AddButton
-        function AddButtonPushed(app, ~)
+        function AddButtonPushed(app, event)
             clear y;
             [filename,filepath] = uigetfile('*.wav');  %open a mat file
             filepath = strcat(filepath,filename);
@@ -95,7 +95,7 @@ classdef Audio_Analyzer < matlab.apps.AppBase
         end
 
         % Value changed function: ListBox
-        function ListBoxValueChanged(app, ~)
+        function ListBoxValueChanged(app, event)
             [~,index] = ismember(app.ListBox.Value, app.ListBox.ItemsData);
             value = app.ListBox.ItemsData{index};
             app.tfile.Text = value;
@@ -123,7 +123,6 @@ classdef Audio_Analyzer < matlab.apps.AppBase
                 set(app.Trims,'Value',false)
                 set(app.SpeedSpinner,'Value',1)
                 set(app.AmplitudeSpinner,'Value',1)
-                set(app.PleaseselectfilefromlistboxLabel,'Text',filePath{1})
                 set(app.StartSpinner,'Enable',false)
                 set(app.EndSpinner,'Enable',false)
                 set(app.NormalizeCheckBox,'Value',false)
@@ -133,19 +132,19 @@ classdef Audio_Analyzer < matlab.apps.AppBase
         end
 
         % Button pushed function: PlayButton
-        function PlayButtonPushed(~, ~)
+        function PlayButtonPushed(app, event)
             global player
             play(player);
         end
 
         % Button pushed function: StopButton_2
-        function StopButton_2Pushed(~, ~)
+        function StopButton_2Pushed(app, event)
             global player
             stop(player);
         end
 
         % Value changed function: PauseResumeButton
-        function PauseResumeButtonValueChanged(app, ~)
+        function PauseResumeButtonValueChanged(app, event)
             value = app.PauseResumeButton.Value;
             global player
             if (value == 1) 
@@ -156,11 +155,11 @@ classdef Audio_Analyzer < matlab.apps.AppBase
         end
 
         % Value changed function: Slider
-        function SliderValueChanged(app, ~)
+        function SliderValueChanged(app, event)
             global player
             [~,index] = ismember(app.ListBox.Value, app.ListBox.ItemsData);
             app.tfile.Text = string(isplaying(player));
-            if (index ~= 0.0 && isplaying(player) ~= false)
+            if (index ~= 0.0 & isplaying(player) ~= false)
                 value = app.ListBox.ItemsData{index};
                 pause(player);
                 NewStart = get(player, 'CurrentSample')+1;
@@ -173,7 +172,7 @@ classdef Audio_Analyzer < matlab.apps.AppBase
         end
 
         % Button pushed function: MergeselectedfilesButton
-        function MergeselectedfilesButtonPushed(app, ~)
+        function MergeselectedfilesButtonPushed(app, event)
             
             filePath = app.ListBox.Value;
             global player
@@ -262,7 +261,7 @@ classdef Audio_Analyzer < matlab.apps.AppBase
         end
 
         % Button pushed function: SaveButton
-        function SaveButtonPushed(app, ~)
+        function SaveButtonPushed(app, event)
             filePath = app.ListBox.Value;
             if (length(filePath) == 1)
                 set(app.AudioOperationPanel,'Enable','off')
@@ -316,7 +315,7 @@ classdef Audio_Analyzer < matlab.apps.AppBase
                     
                 end
                 if (app.Trims.Value)
-                    [~, fs] = audioread(filetarget);
+                    [y, fs] = audioread(filetarget);
                     samples=[fix(app.StartSpinner.Value * fs)+1,round(app.EndSpinner.Value * fs)];
                     [y1,fs2] = audioread(filetarget,samples);
                     audiowrite(filetarget,y1,fs2);
@@ -338,7 +337,7 @@ classdef Audio_Analyzer < matlab.apps.AppBase
         end
 
         % Value changed function: Trims
-        function TrimsValueChanged(app, ~)
+        function TrimsValueChanged(app, event)
             value = app.Trims.Value;
             if (value)
                 set(app.StartSpinner,'Enable',true)
@@ -362,13 +361,13 @@ classdef Audio_Analyzer < matlab.apps.AppBase
         end
 
         % Value changed function: AmplitudeSpinner
-        function AmplitudeSpinnerValueChanged(app, ~)
+        function AmplitudeSpinnerValueChanged(app, event)
             value = app.AmplitudeSpinner.Value;
             set(app.NormalizeCheckBox,'Value',false);
         end
 
         % Button pushed function: ExportMergeAudiotoFileButton
-        function ExportMergeAudiotoFileButtonPushed(~, ~)
+        function ExportMergeAudiotoFileButtonPushed(app, event)
             global mergeAudio
             global mergeFs
             filter = {'*.wav';'*.*'};
