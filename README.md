@@ -14,3 +14,11 @@
   - Merge : Show graph that users compile.
   - Frequency Spectrum : Show graph frequency spectrum of the combined audio signal
 ## Features
+  - Reverse : Reverse your audio files and make them play backwards.
+  - Inverse :  flips the audio samples upside-down or which mean reversing their polarity.
+  - Normalize : If the audio file doesn't have amplitude reach 1 or less than that, It’ll increase until amplitude up to 1. 
+  - Speed : This function can increase or decrease speed of audio file’s users import.
+  - Amplitude : To gain audio amplitude how loud the audio file.
+  - Trim : Users can choose part of the audio file to cut it.
+##Illustration
+  
