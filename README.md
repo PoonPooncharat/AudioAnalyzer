@@ -3,7 +3,9 @@
 ## Introduction
   This project is prepared in partial fulfillment of the requirements for 010123106 the Intro to Signals and Systems which is a part of the computer engineering curriculum in King Mongkut’s University of Technology North Bangkok —KMUTNB— Thailand.
 ## Team Members
-
+  Pooncharat Wongkom 6301012620146
+  Thitanun Mahapornchai 6301012630036
+  Manopas Tanetsakunvatana 6301012630141
 # Overview
   There are 3 graphs on display: Time-Domain, Merge and Frequency Spectrum. Users can select the tab to see what graph they want to see. Users can Set the sound wave that they like too.
 ## How to use
@@ -11,3 +13,4 @@
   - Time-Domain : Show graph that reads audio file from the directory.
   - Merge : Show graph that users compile.
   - Frequency Spectrum : Show graph frequency spectrum of the combined audio signal
+## Features
