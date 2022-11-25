@@ -20,5 +20,6 @@
   - Speed : This function can increase or decrease speed of audio file’s users import.
   - Amplitude : To gain audio amplitude how loud the audio file.
   - Trim : Users can choose part of the audio file to cut it.
-##Illustration
+#Illustration
+
   ![image (6)](https://user-images.githubusercontent.com/88476531/203978607-02e93fdf-1d35-41ee-b3f2-2d4fddafb5e3.png)
